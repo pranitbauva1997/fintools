@@ -13,7 +13,7 @@ export function calculateMonthlySIPAmounts(initial_sip: number, time_period: num
 export function calculateSIPCompounding(sips: number[], rate_in_years_in_percentage: number): number {
   const rate_in_months = rate_in_years_in_percentage / (12.0 * 100.0);
   let final_amount = 0.0;
-  let l = sips.length
+  const l = sips.length
   for (let i = 0; i < l; i++) {
     final_amount += sips[i] * Math.pow(1 + rate_in_months, l - i);
   }

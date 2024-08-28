@@ -1,5 +1,5 @@
 function getFirstOfNextMonthDate(date: Date): Date {
-    let current_date = new Date(date);
+    const current_date = new Date(date);
     current_date.setDate(1);
     current_date.setMonth(current_date.getMonth() + 1);
     return current_date;
@@ -29,11 +29,11 @@ export function calculateEMI(
   let outstanding_amount = loan_amount;
   let present_value_of_emi = 0;
   let total_present_value_of_all_emis = 0;
-  let emi_table = new Map();
+  const emi_table = new Map();
   for (let i = 0; i < no_of_months; i++) {
-    let interest_component = outstanding_amount * rate_in_months;
-    let principal_component = emi - interest_component;
-    let exponent_inflation = Math.pow(1 + inflation_in_months, i);
+    const interest_component = outstanding_amount * rate_in_months;
+    const principal_component = emi - interest_component;
+    const exponent_inflation = Math.pow(1 + inflation_in_months, i);
     present_value_of_emi = emi / exponent_inflation;
     outstanding_amount -= principal_component;
     total_present_value_of_all_emis += present_value_of_emi;
