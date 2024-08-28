@@ -20,7 +20,24 @@ export default function SIP() {
   const [inflationRateInPercentage, setInflationRateInPercentage] = useState(0);
   const [expensesIncurredInPercentage, setExpensesIncurredInPercentage] = useState(0.0);
 
-  const [calculatedValues, setCalculatedValues] = useState({
+  const [calculatedValues, setCalculatedValues] = useState<{
+    absoluteCompoundingRateAfterExpenses: number,
+    sipMonthlyValues: number[],
+    lastMonthlySip: number,
+    lastMonthlySipFormatted: string,
+    investedAmount: number,
+    investedAmountFormatted: string,
+    absoluteValue: number,
+    absoluteValueFormatted: string,
+    absoluteInterestEarned: number,
+    absoluteInterestEarnedFormatted: string,
+    realCompoundingRate: number,
+    realCompoundingRateAfterExpenses: number,
+    realValue: number,
+    realValueFormatted: string,
+    postTaxValue: number,
+    postTaxValueFormatted: string
+  }>({
     absoluteCompoundingRateAfterExpenses: 0,
     sipMonthlyValues: [],
     lastMonthlySip: 0,
