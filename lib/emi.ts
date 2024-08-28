@@ -47,6 +47,5 @@ export function calculateEMI(
     });
     iter_date = getFirstOfNextMonthDate(iter_date);
   }
-  console.log(emi_table.entries());
   return [ emi, emi_table, total_present_value_of_all_emis ];
 }
