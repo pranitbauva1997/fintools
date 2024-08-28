@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { handleAmountInput, calculateRealReturn, formatAsINR } from '../../lib/index';
+import { calculateRealReturn, formatAsINR } from '../../lib/index';
 import { calculateLumpsumCompounding } from '../../lib/lumpsum';
 
 export default function Lumpsum() {
@@ -59,10 +59,10 @@ export default function Lumpsum() {
         <div className="input-same-line">
           <label htmlFor="initial_investment">Initial Investment</label>
           <input 
-            type="text" 
+            type="number" 
             id="initial_investment" 
-            value={formatAsINR(initialInvestment)}
-            onChange={(e) => setInitialInvestment(handleAmountInput(e))}
+            value={initialInvestment}
+            onChange={(e) => setInitialInvestment(Number(e.target.value))}
             placeholder=""
           />
         </div>
@@ -79,10 +79,10 @@ export default function Lumpsum() {
         <div className="input-same-line">
           <label htmlFor="absolute_compounding_rate">Absolute Compounding Rate (in percentage per year)</label>
           <input 
-            type="text" 
+            type="number" 
             id="absolute_compounding_rate" 
-            value={`${absoluteCompoundingRate} %`}
-            readOnly
+            onChange={(e) => setAbsoluteCompoundingRate(Number(e.target.value))}
+            value={absoluteCompoundingRate}
           />
         </div>
         <input
@@ -118,10 +118,10 @@ export default function Lumpsum() {
         <div className="input-same-line">
           <label htmlFor="inflation_rate">Inflation (in percentage)</label>
           <input 
-            type="text" 
+            type="number" 
             id="inflation_rate" 
-            value={`${inflationRate} %`}
-            readOnly
+            value={inflationRate}
+            onChange={(e) => setInflationRate(Number(e.target.value))}
           />
         </div>
         <input
@@ -137,10 +137,10 @@ export default function Lumpsum() {
         <div className="input-same-line">
           <label htmlFor="expenses_incurred">Expenses Incurred (in percentage per year)</label>
           <input 
-            type="text" 
+            type="number" 
             id="expenses_incurred" 
-            value={`${expensesIncurred} %`}
-            readOnly
+            value={expensesIncurred}
+            onChange={(e) => setExpensesIncurred(Number(e.target.value))}
           />
         </div>
         <input

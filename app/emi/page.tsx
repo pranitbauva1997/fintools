@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { handleAmountInput, formatAsINR, truncateToTwoDecimalPlaces } from '../../lib/index';
+import { formatAsINR, truncateToTwoDecimalPlaces } from '../../lib/index';
 import { calculateEMI } from '../../lib/emi';
 
 export default function EMICalculator() {
@@ -47,10 +47,10 @@ export default function EMICalculator() {
         <div className="input-same-line">
           <label htmlFor="loan_amount">Loan Amount</label>
           <input
-            type="text"
+            type="number"
             id="loan_amount"
-            value={formatAsINR(loanAmount)}
-            onChange={(e) => setLoanAmount(handleAmountInput(e))}
+            value={loanAmount}
+            onChange={(e) => setLoanAmount(Number(e.target.value))}
             placeholder=""
           />
         </div>
@@ -69,10 +69,10 @@ export default function EMICalculator() {
             Absolute Interest Rate (in percentage per year)
           </label>
           <input 
-            type="text" 
+            type="number" 
             id="absolute_interest_rate" 
-            value={`${absoluteInterestRate}%`}
-            readOnly
+            value={absoluteInterestRate}
+            onChange={(e) => setAbsoluteInterestRate(Number(e.target.value))}
           />
         </div>
         <input

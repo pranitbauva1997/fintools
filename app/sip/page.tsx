@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { handleAmountInput, formatAsINR, calculateRealReturn } from '../../lib/index';
+import { formatAsINR, calculateRealReturn } from '../../lib/index';
 import { calculateMonthlySIPAmounts, calculateSIPCompounding } from '../../lib/sip';
 
 export default function SIP() {
@@ -73,10 +73,10 @@ export default function SIP() {
         <div className="input-same-line">
           <label htmlFor="initial_monthly_investment">Initial Monthly Investment</label>
           <input 
-            type="text" 
+            type="number" 
             id="initial_monthly_investment"
-            value={formatAsINR(initialMonthlyInvestment)}
-            onChange={(e) => setInitialMonthlyInvestment(handleAmountInput(e.target.value))}
+            value={initialMonthlyInvestment}
+            onChange={(e) => setInitialMonthlyInvestment(Number(e.target.value))}
             placeholder=""
           />
         </div>
@@ -93,10 +93,10 @@ export default function SIP() {
         <div className="input-same-line">
           <label htmlFor="absolute_compounding_rate_in_percentage">Absolute Compounding Rate (in percentage per year)</label>
           <input 
-            type="text" 
+            type="number" 
             id="absolute_compounding_rate_in_percentage" 
-            value={`${absoluteCompoundingRate} %`}
-            onChange={(e) => setAbsoluteCompoundingRate(Number(e.target.value.replace(' %', '')))}
+            value={absoluteCompoundingRate}
+            onChange={(e) => setAbsoluteCompoundingRate(Number(e.target.value))}
             placeholder=""
           />
         </div>
@@ -133,10 +133,10 @@ export default function SIP() {
         <div className="input-same-line">
           <label htmlFor="annual_increase_in_monthly_investment">How much can you increase your monthly SIP every year?</label>
           <input 
-            type="text" 
+            type="number" 
             id="annual_increase_in_monthly_investment" 
-            value={formatAsINR(annualIncreaseInMonthlyInvestment)}
-            onChange={(e) => setAnnualIncreaseInMonthlyInvestment(handleAmountInput(e.target.value))}
+            value={annualIncreaseInMonthlyInvestment}
+            onChange={(e) => setAnnualIncreaseInMonthlyInvestment(Number(e.target.value))}
             placeholder=""
           />
         </div>
@@ -173,10 +173,10 @@ export default function SIP() {
         <div className="input-same-line">
           <label htmlFor="inflation_rate_in_percentage">Inflation (in percentage)</label>
           <input 
-            type="text" 
+            type="number" 
             id="inflation_rate_in_percentage" 
-            value={`${inflationRateInPercentage} %`}
-            onChange={(e) => setInflationRateInPercentage(Number(e.target.value.replace(' %', '')))}
+            value={inflationRateInPercentage}
+            onChange={(e) => setInflationRateInPercentage(Number(e.target.value))}
             placeholder=""
           />
         </div>
@@ -193,10 +193,10 @@ export default function SIP() {
         <div className="input-same-line">
           <label htmlFor="expenses_incurred_in_percentage">Expenses Incurred (in percentage per year)</label>
           <input 
-            type="text" 
+            type="number" 
             id="expenses_incurred_in_percentage" 
-            value={`${expensesIncurredInPercentage} %`}
-            onChange={(e) => setExpensesIncurredInPercentage(Number(e.target.value.replace(' %', '')))}
+            value={expensesIncurredInPercentage}
+            onChange={(e) => setExpensesIncurredInPercentage(Number(e.target.value))}
             placeholder=""
           />
         </div>
