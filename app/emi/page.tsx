@@ -3,7 +3,7 @@
 import '../../styles/main.css';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { formatAsINR, truncateToTwoDecimalPlaces } from '../../lib/index';
+import { formatAsINR, truncateToInteger } from '../../lib/index';
 import { calculateEMI } from '../../lib/emi';
 
 export default function EMICalculator() {
@@ -51,13 +51,18 @@ export default function EMICalculator() {
       <div className="input">
         <div className="input-same-line">
           <label htmlFor="loan_amount">Loan Amount</label>
-          <input
-            type="number"
-            id="loan_amount"
-            value={loanAmount}
-            onChange={(e) => setLoanAmount(Number(e.target.value))}
-            placeholder=""
-          />
+          <div className="input-group">
+            <input
+              type="number"
+              id="loan_amount"
+              value={loanAmount}
+              onChange={(e) => setLoanAmount(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">₹</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -71,14 +76,20 @@ export default function EMICalculator() {
 
         <div className="input-same-line">
           <label htmlFor="absolute_interest_rate">
-            Absolute Interest Rate (in percentage per year)
+            Interest Rate per year
           </label>
-          <input 
-            type="number" 
-            id="absolute_interest_rate" 
-            value={absoluteInterestRate}
-            onChange={(e) => setAbsoluteInterestRate(Number(e.target.value))}
-          />
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="absolute_interest_rate" 
+              value={absoluteInterestRate}
+              onChange={(e) => setAbsoluteInterestRate(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -92,15 +103,20 @@ export default function EMICalculator() {
 
         <div className="input-same-line">
           <label htmlFor="time_period_in_years">
-            Time Period (in years)
+            Time Period
           </label>
-          <input
-            type="number"
-            value={timePeriodInYears}
-            onChange={(e) => setTimePeriodInYears(Number(e.target.value))}
-            id="time_period_in_years"
-            placeholder=""
-          />
+          <div className="input-group">
+            <input
+              type="number"
+              value={timePeriodInYears}
+              onChange={(e) => setTimePeriodInYears(Number(e.target.value))}
+              id="time_period_in_years"
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">Yrs</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -114,15 +130,20 @@ export default function EMICalculator() {
 
         <div className="input-same-line">
           <label htmlFor="inflation_rate">
-            Inflation (in percentage)
+            Inflation
           </label>
-          <input
-            type="number"
-            value={inflationRate}
-            onChange={(e) => setInflationRate(Number(e.target.value))}
-            id="inflation_rate"
-            placeholder=""
-          />
+          <div className="input-group">
+            <input
+              type="number"
+              value={inflationRate}
+              onChange={(e) => setInflationRate(Number(e.target.value))}
+              id="inflation_rate"
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -136,18 +157,18 @@ export default function EMICalculator() {
       </div>
 
       <div className="output">
-        <table>
+        <table className="emi-table">
           <tbody>
             <tr>
               <td>Loan EMI</td>
               <td>{formatAsINR(emi)}</td>
             </tr>
             <tr>
-              <td>Total Absolute Amount Repaid (Principal + Interest)</td>
+              <td>Total Amount Repaid</td>
               <td>{formatAsINR(totalAbsoluteAmountRepaid)}</td>
             </tr>
             <tr>
-              <td>Total Absolute Interest Paid</td>
+              <td>Total Interest Paid</td>
               <td>{formatAsINR(totalAbsoluteInterestPaid)}</td>
             </tr>
             <tr>
@@ -156,14 +177,13 @@ export default function EMICalculator() {
             </tr>
           </tbody>
         </table>
-        <p>EMI Table</p>
-        <table>
+        <table className="emi-table">
           <thead>
             <tr>
               <th>Date</th>
-              <th>Interest Component</th>
-              <th>Principal Component</th>
-              <th>Total Payment</th>
+              <th>Interest</th>
+              <th>Principal</th>
+              <th>Total</th>
               <th>Present Value of EMI</th>
               <th>Outstanding Amount</th>
               <th>% of loan paid</th>
@@ -178,7 +198,7 @@ export default function EMICalculator() {
                   <td>{formatAsINR(data.total_payment)}</td>
                   <td>{formatAsINR(data.present_value_of_emi)}</td>
                   <td>{formatAsINR(data.outstanding_amount)}</td>
-                  <td>{truncateToTwoDecimalPlaces(data.percentage_of_loan_paid)} %</td>
+                  <td>{truncateToInteger(data.percentage_of_loan_paid)}%</td>
                 </tr>
               ))}
           </tbody>

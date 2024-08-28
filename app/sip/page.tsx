@@ -10,8 +10,8 @@ export default function SIP() {
   const [initialMonthlyInvestment, setInitialMonthlyInvestment] = useState(10000);
   const [absoluteCompoundingRate, setAbsoluteCompoundingRate] = useState(1);
   const [timePeriodInYears, setTimePeriodInYears] = useState(1);
-  const [annualIncreaseInMonthlyInvestment, setAnnualIncreaseInMonthlyInvestment] = useState(5000);
-  const [annualIncreaseStoppedAfterInYears, setAnnualIncreaseStoppedAfterInYears] = useState(0);
+  const [annualIncreaseInMonthlyInvestment, setAnnualIncreaseInMonthlyInvestment] = useState(1000);
+  const [annualIncreaseStoppedAfterInYears, setAnnualIncreaseStoppedAfterInYears] = useState(30);
   const [inflationRateInPercentage, setInflationRateInPercentage] = useState(0);
   const [expensesIncurredInPercentage, setExpensesIncurredInPercentage] = useState(0.0);
 
@@ -77,13 +77,18 @@ export default function SIP() {
       <div className="input">
         <div className="input-same-line">
           <label htmlFor="initial_monthly_investment">Initial Monthly Investment</label>
-          <input 
-            type="number" 
-            id="initial_monthly_investment"
-            value={initialMonthlyInvestment}
-            onChange={(e) => setInitialMonthlyInvestment(Number(e.target.value))}
-            placeholder=""
-          />
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="initial_monthly_investment"
+              value={initialMonthlyInvestment}
+              onChange={(e) => setInitialMonthlyInvestment(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">₹</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -96,14 +101,19 @@ export default function SIP() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="absolute_compounding_rate_in_percentage">Absolute Compounding Rate (in percentage per year)</label>
-          <input 
-            type="number" 
-            id="absolute_compounding_rate_in_percentage" 
-            value={absoluteCompoundingRate}
-            onChange={(e) => setAbsoluteCompoundingRate(Number(e.target.value))}
-            placeholder=""
-          />
+          <label htmlFor="absolute_compounding_rate_in_percentage">Compounding Rate per year</label>
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="absolute_compounding_rate_in_percentage" 
+              value={absoluteCompoundingRate}
+              onChange={(e) => setAbsoluteCompoundingRate(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -116,14 +126,19 @@ export default function SIP() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="time_period_in_years">Time Period (in years)</label>
-          <input
-            type="number"
-            value={timePeriodInYears}
-            onChange={(e) => setTimePeriodInYears(Number(e.target.value))}
-            id="time_period_in_years"
-            placeholder=""
-          />
+          <label htmlFor="time_period_in_years">Time Period</label>
+          <div className="input-group">
+            <input
+              type="number"
+              value={timePeriodInYears}
+              onChange={(e) => setTimePeriodInYears(Number(e.target.value))}
+              id="time_period_in_years"
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">Yrs</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -137,13 +152,18 @@ export default function SIP() {
 
         <div className="input-same-line">
           <label htmlFor="annual_increase_in_monthly_investment">How much can you increase your monthly SIP every year?</label>
-          <input 
-            type="number" 
-            id="annual_increase_in_monthly_investment" 
-            value={annualIncreaseInMonthlyInvestment}
-            onChange={(e) => setAnnualIncreaseInMonthlyInvestment(Number(e.target.value))}
-            placeholder=""
-          />
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="annual_increase_in_monthly_investment" 
+              value={annualIncreaseInMonthlyInvestment}
+              onChange={(e) => setAnnualIncreaseInMonthlyInvestment(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">₹</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -156,14 +176,19 @@ export default function SIP() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="annual_increase_stopped_after_in_years">After how many years, do you stop annual increases in monthly SIP? (0 means never stop)</label>
-          <input
-            type="number"
-            value={annualIncreaseStoppedAfterInYears}
-            onChange={(e) => setAnnualIncreaseStoppedAfterInYears(Number(e.target.value))}
-            id="annual_increase_stopped_after_in_years"
-            placeholder=""
-          />
+          <label htmlFor="annual_increase_stopped_after_in_years">After how many years, do you stop annual increases in monthly SIP?</label>
+          <div className="input-group">
+            <input
+              type="number"
+              value={annualIncreaseStoppedAfterInYears}
+              onChange={(e) => setAnnualIncreaseStoppedAfterInYears(Number(e.target.value))}
+              id="annual_increase_stopped_after_in_years"
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">Yrs</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -176,14 +201,19 @@ export default function SIP() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="inflation_rate_in_percentage">Inflation (in percentage)</label>
-          <input 
-            type="number" 
-            id="inflation_rate_in_percentage" 
-            value={inflationRateInPercentage}
-            onChange={(e) => setInflationRateInPercentage(Number(e.target.value))}
-            placeholder=""
-          />
+          <label htmlFor="inflation_rate_in_percentage">Inflation</label>
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="inflation_rate_in_percentage" 
+              value={inflationRateInPercentage}
+              onChange={(e) => setInflationRateInPercentage(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -196,14 +226,19 @@ export default function SIP() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="expenses_incurred_in_percentage">Expenses Incurred (in percentage per year)</label>
-          <input 
-            type="number" 
-            id="expenses_incurred_in_percentage" 
-            value={expensesIncurredInPercentage}
-            onChange={(e) => setExpensesIncurredInPercentage(Number(e.target.value))}
-            placeholder=""
-          />
+          <label htmlFor="expenses_incurred_in_percentage">Expenses Incurred every year</label>
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="expenses_incurred_in_percentage" 
+              value={expensesIncurredInPercentage}
+              onChange={(e) => setExpensesIncurredInPercentage(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -216,7 +251,7 @@ export default function SIP() {
         />
       </div>
       <div className="output">
-        <table>
+        <table className="emi-table">
           <tbody>
             <tr>
               <td>Total invested amount is</td>

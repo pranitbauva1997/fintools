@@ -63,13 +63,18 @@ export default function Lumpsum() {
       <div className="input">
         <div className="input-same-line">
           <label htmlFor="initial_investment">Initial Investment</label>
-          <input 
-            type="number" 
-            id="initial_investment" 
-            value={initialInvestment}
-            onChange={(e) => setInitialInvestment(Number(e.target.value))}
-            placeholder=""
-          />
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="initial_investment" 
+              value={initialInvestment}
+              onChange={(e) => setInitialInvestment(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">₹</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -82,13 +87,18 @@ export default function Lumpsum() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="absolute_compounding_rate">Absolute Compounding Rate (in percentage per year)</label>
-          <input 
-            type="number" 
+          <label htmlFor="absolute_compounding_rate">Compounding Rate per year</label>
+          <div className="input-group">     
+            <input 
+              type="number" 
             id="absolute_compounding_rate" 
             onChange={(e) => setAbsoluteCompoundingRate(Number(e.target.value))}
             value={absoluteCompoundingRate}
-          />
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -101,14 +111,19 @@ export default function Lumpsum() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="time_period">Time Period (in years)</label>
-          <input
+          <label htmlFor="time_period">Time Period</label>
+          <div className="input-group">
+            <input
             type="number"
-            value={timePeriod}
-            onChange={(e) => setTimePeriod(Number(e.target.value))}
-            id="time_period"
-            placeholder=""
-          />
+              value={timePeriod}
+              onChange={(e) => setTimePeriod(Number(e.target.value))}
+              id="time_period"
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">Yrs</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -121,13 +136,19 @@ export default function Lumpsum() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="inflation_rate">Inflation (in percentage)</label>
-          <input 
-            type="number" 
-            id="inflation_rate" 
-            value={inflationRate}
-            onChange={(e) => setInflationRate(Number(e.target.value))}
-          />
+          <label htmlFor="inflation_rate">Inflation</label>
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="inflation_rate" 
+              value={inflationRate}
+              onChange={(e) => setInflationRate(Number(e.target.value))}
+              placeholder=""
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -140,13 +161,18 @@ export default function Lumpsum() {
         />
 
         <div className="input-same-line">
-          <label htmlFor="expenses_incurred">Expenses Incurred (in percentage per year)</label>
-          <input 
-            type="number" 
-            id="expenses_incurred" 
-            value={expensesIncurred}
-            onChange={(e) => setExpensesIncurred(Number(e.target.value))}
-          />
+          <label htmlFor="expenses_incurred">Expenses Incurred</label>
+          <div className="input-group">
+            <input 
+              type="number" 
+              id="expenses_incurred" 
+              value={expensesIncurred}
+              onChange={(e) => setExpensesIncurred(Number(e.target.value))}
+              />
+            <div className="input-group-append">
+              <span className="input-group-text">%</span>
+            </div>
+          </div>
         </div>
         <input
           type="range"
@@ -159,7 +185,7 @@ export default function Lumpsum() {
         />
       </div>
       <div className="output">
-        <table>
+        <table className="emi-table">
           <tbody>
             <tr>
               <td>Investment Value after {timePeriod} yrs</td>

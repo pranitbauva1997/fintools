@@ -5,7 +5,14 @@ export function calculateRealReturn(absolute_return_rate_in_percentage: number, 
 }
 
 export function formatAsINR(amount: number): string {
-  return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amount);
+  return new Intl.NumberFormat('en-IN',
+    {
+      style: 'currency',
+      currency: 'INR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }
+  ).format(truncateToInteger(amount));
 }
 
 
@@ -15,6 +22,6 @@ export function handleAmountInput(event: any) {
   event.target.value = formatAsINR(loan_amount);
 }
 
-export function truncateToTwoDecimalPlaces(value: number): number {
-  return Math.trunc(value * 100) / 100;
+export function truncateToInteger(value: number): number {
+  return Math.trunc(value);
 }
