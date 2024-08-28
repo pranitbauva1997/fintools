@@ -14,6 +14,9 @@ const Home = () => {
       <p>
         Visit the <Link href="/lumpsum">Lumpsum</Link> page.
       </p>
+      <p>
+        Visit the <Link href="/emi">EMI</Link> page.
+      </p>
     </div>
   );
 };

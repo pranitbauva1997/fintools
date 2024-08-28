@@ -53,7 +53,7 @@ export default function Lumpsum() {
 
   return (
     <div className="container">
-      <h1>SIP Calculator</h1>
+      <h1>Lumpsum Calculator</h1>
       <p><Link href="/">Home</Link></p>
       <div className="input">
         <div className="input-same-line">
