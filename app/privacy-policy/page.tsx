@@ -1,8 +1,14 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import '../../styles/main.css';
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    document.title = "Privacy Policy";
+  }, []);
+
   return (
     <div className="container">
       <nav className="navigation">

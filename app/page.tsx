@@ -3,8 +3,7 @@ import '../styles/main.css';
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
-      <p>Hello World! This is the Home page</p>
+      <h1>Financial Tools & Calculators</h1>
       <p>
         Visit the <Link href="/about">About</Link> page.
       </p>

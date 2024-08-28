@@ -8,6 +8,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Financial Tools & Calculators</title>
+      </head>
       <body>
         {children}
         <Footer />

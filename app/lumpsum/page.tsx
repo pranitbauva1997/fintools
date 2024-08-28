@@ -3,10 +3,15 @@
 import '../../styles/main.css';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { calculateRealReturn, formatAsINR } from '../../lib/index';
 import { calculateLumpsumCompounding } from '../../lib/lumpsum';
 
 export default function Lumpsum() {
+  useEffect(() => {
+    document.title = "Lumpsum Calculator";
+  }, []);
+
   const [initialInvestment, setInitialInvestment] = useState(10000);
   const [absoluteCompoundingRate, setAbsoluteCompoundingRate] = useState(1);
   const [timePeriod, setTimePeriod] = useState(1);

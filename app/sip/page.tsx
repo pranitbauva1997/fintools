@@ -3,10 +3,15 @@
 import '../../styles/main.css';
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import { formatAsINR, calculateRealReturn } from '../../lib/index';
 import { calculateMonthlySIPAmounts, calculateSIPCompounding } from '../../lib/sip';
 
 export default function SIP() {
+  useEffect(() => {
+    document.title = "SIP Calculator";
+  }, []);
+
   const [initialMonthlyInvestment, setInitialMonthlyInvestment] = useState(10000);
   const [absoluteCompoundingRate, setAbsoluteCompoundingRate] = useState(1);
   const [timePeriodInYears, setTimePeriodInYears] = useState(1);

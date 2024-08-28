@@ -40,6 +40,10 @@ export default function EMICalculator() {
     setTotalRealAmountRepaid(totalPresentValueOfAllEmis);
   }, [loanAmount, absoluteInterestRate, timePeriodInYears, inflationRate]);
 
+  useEffect(() => {
+    document.title = "EMI Calculator";
+  }, []);
+
   return (
     <div className="container">
       <h1 className="title">EMI Calculator</h1>
