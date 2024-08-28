@@ -1,5 +1,7 @@
 import Footer from '../components/footer';
 import '../styles/main.css';
+import { ErrorBoundary } from 'react-error-boundary';
+import NotFound from './not-found';
 
 export default function RootLayout({
   children,
@@ -12,7 +14,9 @@ export default function RootLayout({
         <title>Financial Tools & Calculators</title>
       </head>
       <body>
-        {children}
+        <ErrorBoundary fallback={<NotFound />}>
+          {children}
+        </ErrorBoundary>
         <Footer />
       </body>
     </html>
