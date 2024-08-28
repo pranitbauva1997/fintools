@@ -1,5 +1,6 @@
 'use client';
 
+import '../../styles/main.css';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { calculateRealReturn, formatAsINR } from '../../lib/index';
@@ -53,8 +54,12 @@ export default function Lumpsum() {
 
   return (
     <div className="container">
-      <h1>Lumpsum Calculator</h1>
-      <p><Link href="/">Home</Link></p>
+      <h1 className="title">Lumpsum Calculator</h1>
+      <nav className="navigation">
+        <Link href="/sip"><button>SIP</button></Link>
+        <Link href="/lumpsum"><button className="nav-active">Lumpsum</button></Link>
+        <Link href="/emi"><button>EMI</button></Link>
+      </nav>
       <div className="input">
         <div className="input-same-line">
           <label htmlFor="initial_investment">Initial Investment</label>
@@ -175,21 +180,6 @@ export default function Lumpsum() {
           </tbody>
         </table>
       </div>
-      <style jsx>{`
-        .container {
-          display: flex;
-          flex-direction: column;
-          width: 40%;
-        }
-        .input {
-          display: flex;
-          flex-direction: column;
-        }
-        .input-same-line {
-          display: flex;
-          justify-content: space-between;
-        }
-      `}</style>
     </div>
   );
 }

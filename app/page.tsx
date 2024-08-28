@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import '../styles/main.css';
 const Home = () => {
   return (
     <div>

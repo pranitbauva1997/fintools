@@ -1,5 +1,6 @@
 "use client";
 
+import '../../styles/main.css';
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { formatAsINR, calculateRealReturn } from '../../lib/index';
@@ -67,8 +68,12 @@ export default function SIP() {
 
   return (
     <div className="container">
-      <h1>SIP Calculator</h1>
-      <p><Link href="/">Home</Link></p>
+      <h1 className="title">SIP Calculator</h1>
+      <nav className="navigation">
+        <Link href="/sip"><button className="nav-active">SIP</button></Link>
+        <Link href="/lumpsum"><button>Lumpsum</button></Link>
+        <Link href="/emi"><button>EMI</button></Link>
+      </nav>
       <div className="input">
         <div className="input-same-line">
           <label htmlFor="initial_monthly_investment">Initial Monthly Investment</label>
@@ -240,21 +245,6 @@ export default function SIP() {
           </tbody>
         </table>
       </div>
-      <style jsx>{`
-        .container {
-          display: flex;
-          flex-direction: column;
-          width: 40%;
-        }
-        .input {
-          display: flex;
-          flex-direction: column;
-        }
-        .input-same-line {
-          display: flex;
-          justify-content: space-between;
-        }
-      `}</style>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import '../../styles/main.css';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { formatAsINR, truncateToTwoDecimalPlaces } from '../../lib/index';
@@ -41,8 +42,12 @@ export default function EMICalculator() {
 
   return (
     <div className="container">
-      <h1>EMI Calculator</h1>
-      <p><Link href="/">Home</Link></p>
+      <h1 className="title">EMI Calculator</h1>
+      <nav className="navigation">
+        <Link href="/sip"><button>SIP</button></Link>
+        <Link href="/lumpsum"><button>Lumpsum</button></Link>
+        <Link href="/emi"><button className="nav-active">EMI</button></Link>
+      </nav>
       <div className="input">
         <div className="input-same-line">
           <label htmlFor="loan_amount">Loan Amount</label>
@@ -179,22 +184,6 @@ export default function EMICalculator() {
           </tbody>
         </table>
       </div>
-
-      <style jsx>{`
-        .container {
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-        }
-        .input {
-          display: flex;
-          flex-direction: column;
-        }
-        .input-same-line {
-          display: flex;
-          justify-content: space-between;
-        }
-      `}</style>
     </div>
   );
 }
