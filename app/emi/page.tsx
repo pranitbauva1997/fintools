@@ -7,6 +7,20 @@ import { formatAsINR, truncateToInteger } from '../../lib/index';
 import { calculateEMI } from '../../lib/emi';
 
 export default function EMICalculator() {
+  const seoData = {
+    title: "EMI Calculator | Financial Tools & Calculators",
+    description: "Calculate your Equated Monthly Installment (EMI) with our easy-to-use EMI calculator.",
+    keywords: ["EMI calculator", "investment calculator", "loan calculator", "financial planning", "wealth management", "financial tools", "investment strategy", "loan planning", "home loan", "car loan", "personal loan", "credit card loan"],
+    url: "https://fintools.bauva.com/emi"
+  };
+  useEffect(() => {
+    document.title = seoData.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seoData.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[name="keywords"]')?.setAttribute('content', seoData.keywords.join(', '));
+  }, []);
+
   const [loanAmount, setLoanAmount] = useState(100000);
   const [absoluteInterestRate, setAbsoluteInterestRate] = useState(10);
   const [timePeriodInYears, setTimePeriodInYears] = useState(2);
@@ -39,10 +53,6 @@ export default function EMICalculator() {
 
     setTotalRealAmountRepaid(totalPresentValueOfAllEmis);
   }, [loanAmount, absoluteInterestRate, timePeriodInYears, inflationRate]);
-
-  useEffect(() => {
-    document.title = "EMI Calculator";
-  }, []);
 
   return (
     <div className="container">

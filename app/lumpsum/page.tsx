@@ -3,13 +3,22 @@
 import '../../styles/main.css';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { calculateRealReturn, formatAsINR } from '../../lib/index';
 import { calculateLumpsumCompounding } from '../../lib/lumpsum';
 
 export default function Lumpsum() {
+  const seoData = {
+    title: "Lumpsum Calculator | Financial Tools & Calculators",
+    description: "Calculate your Lumpsum returns with our easy-to-use Lumpsum calculator.",
+    keywords: ["Lumpsum calculator", "investment calculator", "compound interest", "financial planning", "wealth growth", "mutual funds", "investment returns", "monthly investment", "index funds", "active funds", "passive funds"],
+    url: "https://fintools.bauva.com/lumpsum"
+  };
   useEffect(() => {
-    document.title = "Lumpsum Calculator";
+    document.title = seoData.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seoData.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[name="keywords"]')?.setAttribute('content', seoData.keywords.join(', '));
   }, []);
 
   const [initialInvestment, setInitialInvestment] = useState(10000);

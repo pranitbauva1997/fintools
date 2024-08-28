@@ -5,8 +5,18 @@ import Link from 'next/link';
 import '../../styles/main.css';
 
 const TermsOfService = () => {
+  const seoData = {
+    title: "Terms of Service | Financial Tools & Calculators",
+    description: "Terms of Service for Financial Tools & Calculators",
+    keywords: ["Terms of Service", "Financial Tools", "Calculators", "Investments", "SIP", "Lumpsum", "EMI", "Loans", "EMI Calculator", "Lumpsum Calculator", "SIP Calculator"],
+    url: "https://fintools.bauva.com/terms-of-service"
+  };
   useEffect(() => {
-    document.title = "Terms of Service";
+    document.title = seoData.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seoData.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[name="keywords"]')?.setAttribute('content', seoData.keywords.join(', '));
   }, []);
   return (
     <div className="container">

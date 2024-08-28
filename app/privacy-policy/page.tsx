@@ -5,8 +5,18 @@ import Link from 'next/link';
 import '../../styles/main.css';
 
 const PrivacyPolicy = () => {
+  const seoData = {
+    title: "Privacy Policy | Financial Tools & Calculators",
+    description: "Privacy Policy for Financial Tools & Calculators",
+    keywords: ["Privacy Policy", "Financial Tools", "Calculators", "Investments", "SIP", "Lumpsum", "EMI", "Loans", "EMI Calculator", "Lumpsum Calculator", "SIP Calculator"],
+    url: "https://fintools.bauva.com/privacy-policy"
+  };
   useEffect(() => {
-    document.title = "Privacy Policy";
+    document.title = seoData.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seoData.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[name="keywords"]')?.setAttribute('content', seoData.keywords.join(', '));
   }, []);
 
   return (
