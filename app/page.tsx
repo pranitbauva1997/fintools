@@ -5,9 +5,6 @@ const Home = () => {
     <div>
       <h1>Financial Tools & Calculators</h1>
       <p>
-        Visit the <Link href="/about">About</Link> page.
-      </p>
-      <p>
         Visit the <Link href="/sip">SIP</Link> page.
       </p>
       <p>
@@ -15,6 +12,12 @@ const Home = () => {
       </p>
       <p>
         Visit the <Link href="/emi">EMI</Link> page.
+      </p>
+      <p>
+        Visit the <Link href="/privacy-policy">Privacy Policy</Link> page.
+      </p>
+      <p>
+        Visit the <Link href="/terms-of-service">Terms of Service</Link> page.
       </p>
     </div>
   );
