@@ -72,7 +72,7 @@ export default function Lumpsum() {
       <nav className="navigation">
         <Link href="/sip"><button>SIP</button></Link>
         <Link href="/lumpsum"><button className="nav-active">Lumpsum</button></Link>
-        <Link href="/emi"><button>EMI</button></Link>
+        <Link href="/emi/home-loan"><button>EMI</button></Link>
       </nav>
       <div className="input">
         <div className="input-same-line">

@@ -1,16 +1,24 @@
 'use client';
 
 import '../../../styles/main.css';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import EMICalculator from '../../../components/emi';
 
-export default function EMIPage() {
+export default function PersonalLoanEMIPage() {
   const seoData = {
-    title: "EMI Calculator | Financial Tools & Calculators",
+    title: "Personal Loan EMI Calculator | Financial Tools & Calculators",
     description: "Calculate your Equated Monthly Installment (EMI) with our easy-to-use EMI calculator.",
-    keywords: ["EMI calculator", "investment calculator", "loan calculator", "financial planning", "wealth management", "financial tools", "investment strategy", "loan planning", "home loan", "car loan", "personal loan", "credit card loan"],
+    keywords: ["EMI calculator", "loan calculator", "financial planning", "wealth management", "financial tools", "loan planning", "personal loan", "personal loan EMI calculator", "personal loan fixed rate"],
     url: "https://fintools.bauva.com/emi/personal-loan"
   };
+  useEffect(() => {
+    document.title = seoData.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seoData.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', seoData.url);
+    document.querySelector('meta[name="keywords"]')?.setAttribute('content', seoData.keywords.join(', '));
+  }, []);
 
   return (
     <div className="container">

@@ -105,7 +105,7 @@ export default function SIP() {
         <nav className="navigation">
           <Link href="/sip"><button className="nav-active">SIP</button></Link>
           <Link href="/lumpsum"><button>Lumpsum</button></Link>
-          <Link href="/emi"><button>EMI</button></Link>
+          <Link href="/emi/home-loan"><button>EMI</button></Link>
         </nav>
         <div className="input">
           <div className="input-same-line">

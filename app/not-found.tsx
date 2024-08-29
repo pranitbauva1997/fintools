@@ -9,7 +9,7 @@ export default function NotFound() {
       <nav className="navigation">
         <Link href="/sip"><button>Go to SIP Calculator</button></Link>
         <Link href="/lumpsum"><button>Go to Lumpsum Calculator</button></Link>
-        <Link href="/emi"><button>Go to EMI Calculator</button></Link>
+        <Link href="/emi/home-loan"><button>Go to EMI Calculator</button></Link>
       </nav>
     </div>
   );

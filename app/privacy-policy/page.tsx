@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
       <nav className="navigation">
         <Link href="/sip"><button>SIP</button></Link>
         <Link href="/lumpsum"><button>Lumpsum</button></Link>
-        <Link href="/emi"><button>EMI</button></Link>
+        <Link href="/emi/home-loan"><button>EMI</button></Link>
       </nav>
       <h1>Privacy Policy</h1>
       <p><strong>Effective Date: July 16, 2024</strong></p>

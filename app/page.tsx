@@ -12,7 +12,7 @@ const Home = () => {
         Visit the <Link href="/lumpsum">Lumpsum</Link> page.
       </p>
       <p>
-        Visit the <Link href="/emi">EMI</Link> page.
+        Visit the <Link href="/emi/home-loan">EMI</Link> page.
       </p>
       <p>
         Visit the <Link href="/privacy-policy">Privacy Policy</Link> page.

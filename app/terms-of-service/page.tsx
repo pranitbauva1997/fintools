@@ -23,7 +23,7 @@ const TermsOfService = () => {
       <nav className="navigation">
         <Link href="/sip"><button>SIP</button></Link>
         <Link href="/lumpsum"><button>Lumpsum</button></Link>
-        <Link href="/emi"><button>EMI</button></Link>
+        <Link href="/emi/home-loan"><button>EMI</button></Link>
       </nav>
       <h1>Terms of Service</h1>
       <p><strong>Effective Date: 28th August, 2024</strong></p>
