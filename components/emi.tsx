@@ -51,7 +51,6 @@ export default function EMICalculator({
   const [totalPresentValueOfAllEmis, setTotalPresentValueOfAllEmis] = useState(0);
   const [totalAbsoluteAmountRepaid, setTotalAbsoluteAmountRepaid] = useState(0);
   const [totalAbsoluteInterestPaid, setTotalAbsoluteInterestPaid] = useState(0);
-  const [totalRealAmountRepaid, setTotalRealAmountRepaid] = useState(0);
 
   useEffect(() => {
     const [emi, emiTable, totalPresentValueOfAllEmis] = calculateEMI(
@@ -71,7 +70,6 @@ export default function EMICalculator({
     const calculatedTotalAbsoluteInterestPaid = calculatedTotalAbsoluteAmountRepaid - loanAmount;
     setTotalAbsoluteInterestPaid(calculatedTotalAbsoluteInterestPaid);
 
-    setTotalRealAmountRepaid(totalPresentValueOfAllEmis);
   }, [loanAmount, absoluteInterestRate, timePeriodInYears, inflationRate]);
 
   return (
@@ -201,7 +199,7 @@ export default function EMICalculator({
             </tr>
             <tr>
               <td>Total Real Amount Repaid</td>
-              <td>{formatAsINR(totalRealAmountRepaid)}</td>
+              <td>{formatAsINR(totalPresentValueOfAllEmis)}</td>
             </tr>
           </tbody>
         </table>
@@ -231,6 +229,17 @@ export default function EMICalculator({
               ))}
           </tbody>
         </table>
+        <div>
+          <h2>What is EMI?</h2>
+          <p><b>Equated Monthly Installment</b> - EMI for short - is the amount payable every month to the bank or any other financial institution until the loan amount is fully paid off. It consists of the interest on loan as well as part of the principal amount to be repaid. The sum of principal amount and interest is divided by the tenure, i.e., number of months, in which the loan has to be repaid. This amount has to be paid monthly. The interest component of the EMI would be larger during the initial months and gradually reduce with each payment. The exact percentage allocated towards payment of the principal depends on the interest rate. Even though your monthly EMI payment won't change, the proportion of principal and interest components will change with time. With each successive payment, you'll pay more towards the principal and less in interest.</p>
+          <p>Here's the formula to calculate EMI:</p>
+          <img src="/emiformula.png" alt="Formula for EMI calculation" />
+          <p>where</p>
+          <p><b>E</b> is EMI</p>
+          <p><b>P</b> is Principal Loan Amount</p>
+          <p><b>r</b> is rate of interest calculated on monthly basis</p>
+          <p><b>n</b> is loan term/tenure/duration in number of months</p>
+        </div>
       </div>
     </>
   );

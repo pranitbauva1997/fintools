@@ -220,6 +220,17 @@ export default function Lumpsum() {
           </tbody>
         </table>
       </div>
+      <div>
+        <h2>What is lumpsum investment?</h2>
+        <p>A lumpsum investment is a type of investment where an investor puts a large amount of money into a financial asset, such as mutual funds, stocks, or bonds, all at once, instead of spreading it out over time. This approach contrasts with systematic investment plans (SIPs), where smaller amounts are invested regularly over a period of time. Some important things to note about lumpsum investments:</p>
+        <ul>
+          <li><b>Single Transaction</b>: The entire investment amount is invested in one go, making it straightforward and easy to manage.</li>
+          <li><b>Market Timing</b>: The success of a lumpsum investment can be significantly influenced by the timing of the investment. If you invest during a market dip, your investment might grow rapidly as the market recovers. Conversely, investing at a market peak might result in lower returns or even losses in the short term.</li>
+          <li><b>Risk and Reward</b>: Lumpsum investments carry a higher risk because the entire amount is exposed to market volatility from the moment it's invested. However, if the market performs well after the investment, the potential rewards can be substantial.</li>
+          <li><b>Compounding</b>: A lumpsum investment can benefit from the power of compounding over time. The returns generated from the initial investment can be reinvested, leading to exponential growth.</li>
+          <li><b>Investor Profile</b>: Lumpsum investments are often favored by investors who have a large amount of money available, such as from a bonus, inheritance, or the sale of an asset. It is also suitable for investors who are confident in their market timing and have a higher risk tolerance.</li>
+        </ul>
+      </div>
     </div>
   );
 }

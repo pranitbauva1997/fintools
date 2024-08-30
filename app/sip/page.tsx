@@ -313,6 +313,17 @@ export default function SIP() {
             </tbody>
           </table>
         </div>
+        <div>
+          <h2>What is SIP?</h2>
+          <p>An SIP stands for <b>Systematic Investment Plan</b>. It is a method of investing a fixed amount of money at regular intervals (usually monthly) into a mutual fund. SIPs allow investors to accumulate wealth over time by consistently investing small amounts, regardless of market conditions. Here's how an SIP works:</p>
+          <ol>
+            <li><b>Regular Investments</b>: You choose an amount you want to invest regularly, like every month or quarter. This amount is automatically deducted from your bank account and invested in your chosen mutual fund.</li>
+            <li><b>Cost Averaging</b>: Since you invest regularly regardless of the market conditions, you end up buying more units when prices are low and fewer units when prices are high. This averaging out of costs over time is known as Rupee Cost Averaging.</li>
+            <li><b>Compounding Benefits</b>: The money you invest earns returns, and these returns are reinvested, allowing you to earn returns on your returns. Over time, this compounding effect can significantly increase your wealth.</li>
+            <li><b>Discipline and Convenience</b>: SIPs promote disciplined investing by automating the process, making it easier to stick to an investment plan without worrying about market timing.</li>
+          </ol>
+          <p>SIPs are a useful tool for individuals to build a corpus/wealth over time, particularly for long-term goals like retirement, education or buying a house.</p>
+        </div>
       </div>
     </>
   )
