@@ -22,9 +22,9 @@ export default function Lumpsum() {
   }, []);
 
   const [initialInvestment, setInitialInvestment] = useState(10000);
-  const [absoluteCompoundingRate, setAbsoluteCompoundingRate] = useState(1);
-  const [timePeriod, setTimePeriod] = useState(1);
-  const [inflationRate, setInflationRate] = useState(0);
+  const [absoluteCompoundingRate, setAbsoluteCompoundingRate] = useState(10);
+  const [timePeriod, setTimePeriod] = useState(5);
+  const [inflationRate, setInflationRate] = useState(6);
   const [expensesIncurred, setExpensesIncurred] = useState(0.0);
 
   const [absoluteCompoundingRateAfterExpenses, setAbsoluteCompoundingRateAfterExpenses] = useState(0);
