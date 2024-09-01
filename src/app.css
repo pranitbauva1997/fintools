@@ -11,8 +11,20 @@ html {
 body {
   background: var(--background, #fff);
   color: var(--text, #000);
+  line-height: 1.5;
   margin: 0;
   padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: calc(var(--font-size-3) / 2 + 1em) var(--font-size-3) 4em;
+  margin: 0 auto;
+  color: var(--textS-2);
+  width: 100%;
+  min-height: calc(100dvh - 5em);
 }
 
 .body-contents {

@@ -4,22 +4,37 @@
   > div {
     max-width: 80ch;
   }
-
-  p,
-  li {
-    max-width: 50ch;
-  }
 }
 .range-and-input {
-  --cluster-gap: 0.5em 2em;
-  align-items: center;
+  align-items: flex-start;
+  gap: 0.5em;
+  max-width: 40ch;
 }
+
 .input-group {
   --cluster-gap: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
   padding-inline-end: var(--cluster-gap);
+  align-self: flex-end;
+
+  width: max-content;
+  flex-shrink: 1;
+
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--border);
+  border-radius: 0.25em;
+
+  input[type="number"] {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    text-align: right;
+    font-weight: bold;
+    width: 6ch;
+  }
 
   input[type="number"] {
     -moz-appearance: textfield;
@@ -32,14 +47,35 @@
 
   :last-child {
     width: 2ch;
-    padding: 0.5em;
-    font-size: var(--font-size-1);
+    color: var(--primary-b);
     text-align: center;
   }
 }
 
+.number-input {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  width: 100%;
+  justify-content: end;
+  :first-child {
+    margin-inline-end: auto;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+}
+
 .range-input {
+  label > div:first-of-type {
+    display: none;
+  }
+  font-size: var(--font-size--2);
   flex-grow: 1;
+  width: 100%;
 }
 
 .output {
@@ -63,10 +99,12 @@
 
 .explanation {
   max-width: 60ch;
-  h2 {
-    margin: 0 0 0.5em;
-  }
   p {
     margin: 0.5em 0;
+  }
+  ul {
+    li {
+      margin: 0.5em 0;
+    }
   }
 }

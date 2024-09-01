@@ -1,54 +1,11 @@
 import { createStore } from 'solid-js/store';
-import { calculateRealReturn, formatAsINR } from '../lib/index';
-import { calculateLumpsumCompounding } from '../lib/lumpsum';
-import { Stack, Input, Cluster, RangeInput } from '@xypnox/xip-ui';
+import { calculateRealReturn, formatAsINR } from '../../lib/index';
+import { calculateLumpsumCompounding } from '../../lib/lumpsum';
+import { Stack, Cluster } from '@xypnox/xip-ui';
 
-import styles from '../style/calc.module.css';
-import { Meta, Title } from '@solidjs/meta';
-
-const InputWithRange = (props: {
-  label: string,
-  id: string,
-  value: number,
-  unit: string,
-  onChange: (n: number) => void,
-  range: {
-    min: number,
-    max: number,
-    step: number,
-  }
-}) => {
-  return (
-    <>
-      <Cluster class={styles["range-and-input"]}>
-        <Stack space={'0.25em'}>
-          <label for={props.id}>{props.label}</label>
-          <Cluster class={styles["input-group"]}>
-            <Input
-              type="number"
-              value={props.value}
-              onChange={(e) => props.onChange(Number(e.target.value))}
-              placeholder=""
-            />
-            <div class="input-group-append">
-              {props.unit}
-            </div>
-          </Cluster>
-        </Stack>
-        <Stack class={styles['range-input']}>
-          <RangeInput
-            showValue={false}
-            label={props.label}
-            value={props.value}
-            onChange={(e) => props.onChange(Number((e.target as HTMLInputElement).value))}
-            {...props.range}
-          />
-        </Stack>
-      </Cluster>
-    </>
-
-  )
-}
+import styles from '../../style/calc.module.css';
+import { InputWithRange } from '~/components/InputWithRange';
+import { SEO } from '~/components/seo';
 
 export default function Lumpsum() {
 
@@ -90,19 +47,14 @@ export default function Lumpsum() {
     keywords: ["Lumpsum calculator", "investment calculator", "compound interest", "financial planning", "wealth growth", "mutual funds", "investment returns", "monthly investment", "index funds", "active funds", "passive funds"],
     url: "https://fintools.bauva.com/lumpsum"
   };
+
   return (
     <Stack>
-      <Title>{seoData.title}</Title>
-      <Meta name="description" content={seoData.description} />
-      <Meta name="keywords" content={seoData.keywords.join(', ')} />
-      <Meta property="og:title" content={seoData.title} />
-      <Meta property="og:description" content={seoData.description} />
-      <Meta property="og:url" content={seoData.url} />
-      <Meta property="og:type" content="website" />
+      <SEO {...seoData} />
 
       <h1 class="title">Lumpsum Calculator</h1>
       <Cluster class={styles.calc}>
-        <Stack>
+        <Stack class={styles.input}>
           <InputWithRange
             label="Initial Investment"
             id="initial_investment"
@@ -198,18 +150,18 @@ export default function Lumpsum() {
             </tbody>
           </table>
         </Stack>
-        <Stack class={styles.explanation}>
-          <h2>What is lumpsum investment?</h2>
-          <p>A lumpsum investment is a type of investment where an investor puts a large amount of money into a financial asset, such as mutual funds, stocks, or bonds, all at once, instead of spreading it out over time. This approach contrasts with systematic investment plans (SIPs), where smaller amounts are invested regularly over a period of time. Some important things to note about lumpsum investments:</p>
-          <ul>
-            <li><b>Single Transaction</b>: The entire investment amount is invested in one go, making it straightforward and easy to manage.</li>
-            <li><b>Market Timing</b>: The success of a lumpsum investment can be significantly influenced by the timing of the investment. If you invest during a market dip, your investment might grow rapidly as the market recovers. Conversely, investing at a market peak might result in lower returns or even losses in the short term.</li>
-            <li><b>Risk and Reward</b>: Lumpsum investments carry a higher risk because the entire amount is exposed to market volatility from the moment it's invested. However, if the market performs well after the investment, the potential rewards can be substantial.</li>
-            <li><b>Compounding</b>: A lumpsum investment can benefit from the power of compounding over time. The returns generated from the initial investment can be reinvested, leading to exponential growth.</li>
-            <li><b>Investor Profile</b>: Lumpsum investments are often favored by investors who have a large amount of money available, such as from a bonus, inheritance, or the sale of an asset. It is also suitable for investors who are confident in their market timing and have a higher risk tolerance.</li>
-          </ul>
-        </Stack>
       </Cluster>
+      <Stack class={styles.explanation}>
+        <h2>What is lumpsum investment?</h2>
+        <p>A lumpsum investment is a type of investment where an investor puts a large amount of money into a financial asset, such as mutual funds, stocks, or bonds, all at once, instead of spreading it out over time. This approach contrasts with systematic investment plans (SIPs), where smaller amounts are invested regularly over a period of time. Some important things to note about lumpsum investments:</p>
+        <ul>
+          <li><b>Single Transaction</b>: The entire investment amount is invested in one go, making it straightforward and easy to manage.</li>
+          <li><b>Market Timing</b>: The success of a lumpsum investment can be significantly influenced by the timing of the investment. If you invest during a market dip, your investment might grow rapidly as the market recovers. Conversely, investing at a market peak might result in lower returns or even losses in the short term.</li>
+          <li><b>Risk and Reward</b>: Lumpsum investments carry a higher risk because the entire amount is exposed to market volatility from the moment it's invested. However, if the market performs well after the investment, the potential rewards can be substantial.</li>
+          <li><b>Compounding</b>: A lumpsum investment can benefit from the power of compounding over time. The returns generated from the initial investment can be reinvested, leading to exponential growth.</li>
+          <li><b>Investor Profile</b>: Lumpsum investments are often favored by investors who have a large amount of money available, such as from a bonus, inheritance, or the sale of an asset. It is also suitable for investors who are confident in their market timing and have a higher risk tolerance.</li>
+        </ul>
+      </Stack>
     </Stack>
   );
 }

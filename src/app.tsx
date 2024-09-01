@@ -16,15 +16,17 @@ export default function App() {
           <style innerHTML={cssVal} />
           <Title>SolidStart - Basic</Title>
           <Cluster style={{ padding: '1em' }}>
-            <a href="/">Index</a>
+            <a href="/">Tools</a>
             <a href="/lumpsum">Lumpsum</a>
+            <a href="/emi/home-loan">EMI</a>
+            <a href="/sip/">SIP</a>
             <a href="/about">About</a>
           </Cluster>
-          <Stack style={{ padding: '1em' }}>
+          <main>
             <Suspense>
               {props.children}
             </Suspense>
-          </Stack>
+          </main>
         </MetaProvider>
       )}
     >
