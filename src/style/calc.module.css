@@ -1,6 +1,6 @@
 .calc {
-  align-items: stretch;
-  gap: 0em;
+  align-items: stretch !important;
+  gap: 0em !important;
   border: 1px solid var(--border);
   border-radius: 0.5em;
   overflow: hidden;
