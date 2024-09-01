@@ -1,6 +1,3 @@
-'use client';
-
-import '../../styles/main.css';
 import { SEO } from '~/components/seo';
 
 export default function EMIPage() {
