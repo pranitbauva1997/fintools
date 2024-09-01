@@ -21,7 +21,7 @@ const base = {
     family: '"Inter", sans-serif',
     heading: '"Source Serif 4", serif',
     mono: '"Fira Mono", monospace',
-    scale: defaultTypeScale,
+    scale: {...defaultTypeScale, maxFontSize: 16},
   },
 };
 
