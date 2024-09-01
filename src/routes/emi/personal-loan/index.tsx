@@ -14,10 +14,9 @@ export default function PersonalLoanEMIPage() {
     <Stack>
       <SEO {...seoData} />
       <h1 class="title">Personal Loan EMI Calculator</h1>
-      <Cluster>
-        EMI Calculators:
-        <a href="/emi/home-loan">Home Loan</a>
-        <a href="/emi/personal-loan">Personal Loan</a>
+      <Cluster class="tabs">
+        <a class="inactive-tab" href="/emi/home-loan">Home Loan</a>
+        <a class="active-tab" href="/emi/personal-loan">Personal Loan</a>
       </Cluster>
       <EMICalculator
         loanAmountInitial={100000}

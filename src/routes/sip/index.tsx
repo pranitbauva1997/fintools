@@ -89,7 +89,7 @@ export default function SIP() {
 
             <InputWithRange
               label='Annual Increase in Monthly Investment'
-              description='How much can you increase your monthly SIP every year?'
+              description='Increase in monthly SIP every year?'
               id='annual_increase_in_monthly_investment'
               value={calcStore.annualIncreaseInMonthlyInvestment}
               unit='₹'
@@ -103,7 +103,7 @@ export default function SIP() {
 
             <InputWithRange
               label='Annual Increase Stopped After'
-              description='After how many years, do you stop annual increases in monthly SIP?'
+              description='Increase in SIP stops after?'
               id='annual_increase_stopped_after_in_years'
               value={calcStore.annualIncreaseStoppedAfterInYears}
               unit='Yrs'
@@ -140,7 +140,6 @@ export default function SIP() {
               }}
               onChange={(n) => setCalcStore('expensesIncurred', n)}
             />
-
           </div>
 
           <Stack class={styles.output}>
@@ -173,7 +172,6 @@ export default function SIP() {
               </tbody>
             </table>
           </Stack>
-
         </Cluster>
 
         <Stack class={styles.explanation}>

@@ -70,13 +70,12 @@ export default function App() {
           <Title>SolidStart - Basic</Title>
           <nav>
             <Cluster>
-              <a href="/">Fintools</a>
+              <img src="/image.jpg" alt="logo" class="logo" />
             </Cluster>
             <Cluster>
               <a href="/lumpsum">Lumpsum</a>
               <a href="/emi/home-loan">EMI</a>
               <a href="/sip/">SIP</a>
-              <a href="/about">About</a>
             </Cluster>
             <Switcher />
           </nav>
@@ -85,6 +84,18 @@ export default function App() {
               {props.children}
             </Suspense>
           </main>
+          <footer>
+            <Cluster>
+              <p>
+                Built by <a href="https://bauva.com" target="_blank" rel="noopener noreferrer">Bauva</a>{' '}
+                & <a target="_blank" rel="noopener noreferrer" href="https://www.xypnox.com">xypnox</a>
+              </p>
+            </Cluster>
+            <Cluster>
+              <a href="/privacy-policy">Privacy Policy</a>
+              <a href="/terms-of-service">Terms of Service</a>
+            </Cluster>
+          </footer>
         </MetaProvider>
       )}
     >

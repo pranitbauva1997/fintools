@@ -43,6 +43,10 @@ nav {
   gap: 1em;
   max-width: var(--layout-width);
   margin-inline: auto;
+  img {
+    height: 2em;
+    width: auto;
+  }
   button {
     padding: 0.25em !important;
   }
@@ -105,9 +109,18 @@ a:hover {
   color: var(--primary-s-4);
 }
 
+h1.title {
+  text-align: center;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+
+  td button {
+    padding: 0.25em !important;
+  }
+
   th,
   td {
     text-align: left;
@@ -125,5 +138,56 @@ table {
     position: sticky;
     left: 0;
     background: var(--surface-1);
+  }
+
+  td.expandable {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  tr.expanded {
+    background: var(--surface-1);
+  }
+}
+
+footer {
+  display: flex;
+  gap: 2em;
+  margin: 2em 0 0;
+  padding: 1em var(--font-size-3);
+  max-width: var(--layout-width);
+  margin-inline: auto;
+
+  border-top: 1px solid var(--border);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.tabs {
+  &.tabs {
+    gap: 0em;
+    font-size: var(--font-size-1);
+    font-weight: 500;
+    margin-block-end: -1.2em;
+    z-index: 1;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  a {
+    color: var(--textS-2);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 0.5em 0.5em 0 0;
+    border-bottom: none;
+  }
+  a.active-tab {
+    color: var(--primary-b);
+    background: var(--background);
   }
 }

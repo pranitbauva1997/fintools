@@ -15,20 +15,20 @@ import {
 
 const base = {
   layout: {
-    width: "1600px",
+    width: "1000px",
   },
   font: {
     family: '"Inter", sans-serif',
     heading: '"Source Serif 4", serif',
     mono: '"Fira Mono", monospace',
-    scale: {...defaultTypeScale, maxFontSize: 16},
+    scale: { ...defaultTypeScale, maxFontSize: 16 },
   },
 };
 
 const vars = {
   light: {
     primary: "oklch(50% 0.15 290)", //'oklch(55.5% 0.15 220)',
-    background: "oklch(88.5% 0.02 290)",
+    background: "oklch(95.5% 0.02 290)",
     text: "oklch(25% 0.04 240)",
   },
   dark: {
@@ -88,7 +88,7 @@ const modeFn = (m: Vars, md: "light" | "dark") => ({
   }),
   // Remove the first element
   surface: getShades(m.background, [0, 4], {
-    lightness: md === "light" ? 4 : 4,
+    lightness: md === "light" ? -2 : 4,
   }).slice(1),
 });
 

@@ -2,9 +2,15 @@ import { formatAsINR, truncateToInteger } from '../lib/index';
 import { calculateEMI } from '../lib/emi';
 import { createStore } from 'solid-js/store';
 import { InputWithRange } from './InputWithRange';
-import { For } from 'solid-js';
-import { Cluster, Stack } from '@xypnox/xip-ui';
+import { createSignal, For, Show } from 'solid-js';
+import { Button, Cluster, Stack } from '@xypnox/xip-ui';
+
+import PhPlusBold from '~icons/ph/plus-bold';
+import PhMinusBold from '~icons/ph/minus-bold';
+
 import styles from '../style/calc.module.css';
+
+import groupBy from 'lodash.groupby';
 
 
 const homeLoanConfig = {
@@ -20,6 +26,88 @@ const homeLoanConfig = {
 
 type CalculatorConfig = typeof homeLoanConfig;
 
+const GroupTableRow = (props: {
+  rows: [Date, {
+    interest_component: number;
+    principal_component: number;
+    present_value_of_emi: number;
+    total_payment: number;
+    outstanding_amount: number;
+    percentage_of_loan_paid: number;
+  }][]
+}) => {
+  const [expanded, setExpanded] = createSignal(false);
+
+  const aggregated = () => {
+    return {
+      agg: props.rows
+        .map((d) => d[1])
+        .reduce((acc, data) => ({
+          interest_component: acc.interest_component + data.interest_component,
+          principal_component: acc.principal_component + data.principal_component,
+          total_payment: acc.total_payment + data.total_payment,
+          present_value_of_emi: acc.present_value_of_emi + data.present_value_of_emi,
+          outstanding_amount: data.outstanding_amount,
+          percentage_of_loan_paid: data.percentage_of_loan_paid,
+        }), {
+          interest_component: 0,
+          principal_component: 0,
+          total_payment: 0,
+          present_value_of_emi: 0,
+          outstanding_amount: 0,
+          percentage_of_loan_paid: 0,
+        }), date: props.rows[0][0]
+    }
+  }
+
+  return (
+    <>
+      <tr>
+        <td>
+          <Cluster style={{ "flex-wrap": "nowrap" }}>
+            <Button
+              type="button"
+              title="Expand"
+              onClick={() => setExpanded(!expanded())}>
+              {expanded() ?
+                <PhMinusBold />
+                :
+                <PhPlusBold />
+              }
+            </Button>
+            {aggregated().date.toLocaleDateString('en-IN', { year: 'numeric' })}
+          </Cluster>
+        </td>
+        <td>{formatAsINR(aggregated().agg.interest_component)}</td>
+        <td>{formatAsINR(aggregated().agg.principal_component)}</td>
+        <td>{formatAsINR(aggregated().agg.total_payment)}</td>
+        <td>{formatAsINR(aggregated().agg.present_value_of_emi)}</td>
+        <td>{formatAsINR(aggregated().agg.outstanding_amount)}</td>
+        <td>{truncateToInteger(aggregated().agg.percentage_of_loan_paid)}%</td>
+      </tr>
+      <Show when={expanded()}>
+        <For each={props.rows}>
+          {([date, data]: any, index) =>
+            <>
+              <tr classList={{ expanded: expanded() }}>
+                <td class="expandable">
+                  {date.toLocaleDateString('en-IN', { month: 'short', })}
+                </td>
+                <td>{formatAsINR(data.interest_component)}</td>
+                <td>{formatAsINR(data.principal_component)}</td>
+                <td>{formatAsINR(data.total_payment)}</td>
+                <td>{formatAsINR(data.present_value_of_emi)}</td>
+                <td>{formatAsINR(data.outstanding_amount)}</td>
+                <td>{truncateToInteger(data.percentage_of_loan_paid)}%</td>
+              </tr>
+            </>
+          }
+        </For >
+      </Show>
+    </>
+
+  )
+}
 
 export default function EMICalculator(props: CalculatorConfig) {
 
@@ -64,9 +152,16 @@ export default function EMICalculator(props: CalculatorConfig) {
       calcStore.inflationRate,
       calcStore.timePeriod
     )
+
+    const normalArr = Array.from(val[1])
+    const groupedTable = groupBy(normalArr, (val) => val[0].getFullYear());
+
+    console.log(groupedTable);
+
+
     return {
       emi: val[0],
-      table: val[1],
+      table: groupedTable,
       totalPresentValueOfAllEmis: val[2],
     }
   }
@@ -74,6 +169,10 @@ export default function EMICalculator(props: CalculatorConfig) {
   const totalAbsoluteAmountRepaid = () => calculated().emi * calcStore.timePeriod * 12
 
   const totalAbsoluteInterestPaid = () => totalAbsoluteAmountRepaid() - calcStore.loanAmount
+
+  console.log('T', {
+    t: Object.entries(calculated().table)
+  })
 
   return (
     <>
@@ -169,17 +268,9 @@ export default function EMICalculator(props: CalculatorConfig) {
             </tr>
           </thead>
           <tbody>
-            <For each={Array.from(calculated().table)}>
-              {([date, data], index) => (
-                <tr>
-                  <td>{date.toLocaleDateString()}</td>
-                  <td>{formatAsINR(data.interest_component)}</td>
-                  <td>{formatAsINR(data.principal_component)}</td>
-                  <td>{formatAsINR(data.total_payment)}</td>
-                  <td>{formatAsINR(data.present_value_of_emi)}</td>
-                  <td>{formatAsINR(data.outstanding_amount)}</td>
-                  <td>{truncateToInteger(data.percentage_of_loan_paid)}%</td>
-                </tr>
+            <For each={Object.entries(calculated().table)}>
+              {([date, data]: any, index) => (
+                <GroupTableRow rows={data} />
               )}
             </For>
           </tbody>

@@ -10,11 +10,6 @@ const TermsOfService = () => {
   return (
     <div class="container">
       <SEO {...seoData} />
-      <nav class="navigation">
-        <a href="/sip"><button>SIP</button></a>
-        <a href="/lumpsum"><button>Lumpsum</button></a>
-        <a href="/emi/home-loan"><button>EMI</button></a>
-      </nav>
       <h1>Terms of Service</h1>
       <p><strong>Effective Date: 28th August, 2024</strong></p>
 

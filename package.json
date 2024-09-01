@@ -13,6 +13,7 @@
     "@solidjs/start": "^1.0.6",
     "@xypnox/themescura": "^0.1.2",
     "@xypnox/xip-ui": "^0.1.2",
+    "lodash.groupby": "^4.6.0",
     "solid-js": "^1.8.22",
     "vinxi": "^0.4.2"
   },
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.2.0",
+    "@types/lodash.groupby": "^4.6.9",
     "unplugin-icons": "^0.19.2"
   }
 }
