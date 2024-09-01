@@ -28,8 +28,5 @@ npm run dev
 npm run build
 ```
 
-## Run in production mode
 
-```bash
-npm start
-```
+The built files for static pages are at `.output/`

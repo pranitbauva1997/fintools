@@ -1,0 +1,22 @@
+{
+  "name": "fintools",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "version": "vinxi version"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.14.3",
+    "@solidjs/start": "^1.0.6",
+    "@xypnox/themescura": "^0.1.2",
+    "@xypnox/xip-ui": "^0.1.2",
+    "solid-js": "^1.8.22",
+    "vinxi": "^0.4.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
