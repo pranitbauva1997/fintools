@@ -19,88 +19,10 @@ export default function SIP() {
     absoluteCompoundingRate: 10,
     annualIncreaseInMonthlyInvestment: 1000,
     annualIncreaseStoppedAfterInYears: 30,
-    // initialInvestment: 10000,
-    // absoluteCompoundingRate: 10,
     timePeriod: 5,
     inflationRate: 6,
     expensesIncurred: 0.0,
   });
-
-  // const [initialMonthlyInvestment, setInitialMonthlyInvestment] = useState(10000);
-  // const [absoluteCompoundingRate, setAbsoluteCompoundingRate] = useState(1);
-  // const [timePeriodInYears, setTimePeriodInYears] = useState(1);
-  // const [annualIncreaseInMonthlyInvestment, setAnnualIncreaseInMonthlyInvestment] = useState(1000);
-  // const [annualIncreaseStoppedAfterInYears, setAnnualIncreaseStoppedAfterInYears] = useState(30);
-  // const [inflationRateInPercentage, setInflationRateInPercentage] = useState(0);
-  // const [expensesIncurredInPercentage, setExpensesIncurredInPercentage] = useState(0.0);
-
-  // const [calculatedValues, setCalculatedValues] = useState<{
-  //   absoluteCompoundingRateAfterExpenses: number,
-  //   sipMonthlyValues: number[],
-  //   lastMonthlySip: number,
-  //   lastMonthlySipFormatted: string,
-  //   investedAmount: number,
-  //   investedAmountFormatted: string,
-  //   absoluteValue: number,
-  //   absoluteValueFormatted: string,
-  //   absoluteInterestEarned: number,
-  //   absoluteInterestEarnedFormatted: string,
-  //   realCompoundingRate: number,
-  //   realCompoundingRateAfterExpenses: number,
-  //   realValue: number,
-  //   realValueFormatted: string,
-  //   postTaxValue: number,
-  //   postTaxValueFormatted: string
-  // }>({
-  //   absoluteCompoundingRateAfterExpenses: 0,
-  //   sipMonthlyValues: [],
-  //   lastMonthlySip: 0,
-  //   lastMonthlySipFormatted: '',
-  //   investedAmount: 0,
-  //   investedAmountFormatted: '',
-  //   absoluteValue: 0,
-  //   absoluteValueFormatted: '',
-  //   absoluteInterestEarned: 0,
-  //   absoluteInterestEarnedFormatted: '',
-  //   realCompoundingRate: 0,
-  //   realCompoundingRateAfterExpenses: 0,
-  //   realValue: 0,
-  //   realValueFormatted: '',
-  //   postTaxValue: 0,
-  //   postTaxValueFormatted: ''
-  // });
-
-  // useEffect(() => {
-  //   const absoluteCompoundingRateAfterExpenses = absoluteCompoundingRate - expensesIncurredInPercentage;
-  //   const sipMonthlyValues = calculateMonthlySIPAmounts(initialMonthlyInvestment, timePeriodInYears, annualIncreaseInMonthlyInvestment, annualIncreaseStoppedAfterInYears);
-  //   const lastMonthlySip = sipMonthlyValues[sipMonthlyValues.length - 1];
-  //   const investedAmount = sipMonthlyValues.reduce((partialSum, a) => partialSum + a, 0);
-  //   const absoluteValue = calculateSIPCompounding(sipMonthlyValues, absoluteCompoundingRateAfterExpenses);
-  //   const absoluteInterestEarned = absoluteValue - investedAmount;
-  //   const realCompoundingRate = calculateRealReturn(absoluteCompoundingRate, inflationRateInPercentage);
-  //   const realCompoundingRateAfterExpenses = realCompoundingRate - expensesIncurredInPercentage;
-  //   const realValue = calculateSIPCompounding(sipMonthlyValues, realCompoundingRateAfterExpenses);
-  //   const postTaxValue = (absoluteInterestEarned * 0.9) + investedAmount;
-
-  //   setCalculatedValues({
-  //     absoluteCompoundingRateAfterExpenses,
-  //     sipMonthlyValues,
-  //     lastMonthlySip,
-  //     lastMonthlySipFormatted: formatAsINR(lastMonthlySip),
-  //     investedAmount,
-  //     investedAmountFormatted: formatAsINR(investedAmount),
-  //     absoluteValue,
-  //     absoluteValueFormatted: formatAsINR(absoluteValue),
-  //     absoluteInterestEarned,
-  //     absoluteInterestEarnedFormatted: formatAsINR(absoluteInterestEarned),
-  //     realCompoundingRate,
-  //     realCompoundingRateAfterExpenses,
-  //     realValue,
-  //     realValueFormatted: formatAsINR(realValue),
-  //     postTaxValue,
-  //     postTaxValueFormatted: formatAsINR(postTaxValue)
-  //   });
-  // }, [initialMonthlyInvestment, absoluteCompoundingRate, timePeriodInYears, annualIncreaseInMonthlyInvestment, annualIncreaseStoppedAfterInYears, inflationRateInPercentage, expensesIncurredInPercentage]);
 
   const absoluteCompoundingRateAfterExpenses = () => calcStore.absoluteCompoundingRate - calcStore.expensesIncurred;
   const sipMonthlyValues = () => calculateMonthlySIPAmounts(
@@ -110,7 +32,6 @@ export default function SIP() {
     calcStore.annualIncreaseStoppedAfterInYears
   );
 
-  // const lastMonthlySip = () => sipMonthlyValues()[sipMonthlyValues().length - 1];
   const investedAmount = () => sipMonthlyValues().reduce((partialSum, a) => partialSum + a, 0);
   const absoluteValue = () => calculateSIPCompounding(sipMonthlyValues(), absoluteCompoundingRateAfterExpenses());
 
@@ -252,8 +173,10 @@ export default function SIP() {
               </tbody>
             </table>
           </Stack>
+
         </Cluster>
-        <div>
+
+        <Stack class={styles.explanation}>
           <h2>What is SIP?</h2>
           <p>An SIP stands for <b>Systematic Investment Plan</b>. It is a method of investing a fixed amount of money at regular intervals (usually monthly) into a mutual fund. SIPs allow investors to accumulate wealth over time by consistently investing small amounts, regardless of market conditions. Here's how an SIP works:</p>
           <ol>
@@ -263,7 +186,8 @@ export default function SIP() {
             <li><b>Discipline and Convenience</b>: SIPs promote disciplined investing by automating the process, making it easier to stick to an investment plan without worrying about market timing.</li>
           </ol>
           <p>SIPs are a useful tool for individuals to build a corpus/wealth over time, particularly for long-term goals like retirement, education or buying a house.</p>
-        </div>
+        </Stack>
+
       </Stack>
     </>
   )

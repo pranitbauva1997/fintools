@@ -35,7 +35,7 @@ export default createHandler(() => (
 
           {assets}
         </head>
-        <body>
+        <body class="dark-mode">
           <div id="app">{children}</div>
           {scripts}
         </body>

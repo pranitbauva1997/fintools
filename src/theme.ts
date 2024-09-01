@@ -15,7 +15,7 @@ import {
 
 const base = {
   layout: {
-    width: "1400px",
+    width: "1600px",
   },
   font: {
     family: '"Inter", sans-serif',
@@ -27,14 +27,14 @@ const base = {
 
 const vars = {
   light: {
-    primary: "oklch(50% 0.15 250)", //'oklch(55.5% 0.15 220)',
-    background: "oklch(88.5% 0.015 220)",
-    text: "oklch(25% 0.05 250)",
+    primary: "oklch(50% 0.15 290)", //'oklch(55.5% 0.15 220)',
+    background: "oklch(88.5% 0.02 290)",
+    text: "oklch(25% 0.04 240)",
   },
   dark: {
-    primary: "oklch(65% 0.15 250)",
-    background: "oklch(13% 0.04 220)",
-    text: "oklch(75% 0.05 240)",
+    primary: "oklch(65% 0.15 290)",
+    background: "oklch(10% 0.03 290)",
+    text: "oklch(75% 0.04 240)",
   },
 };
 
@@ -78,17 +78,17 @@ const modeFn = (m: Vars, md: "light" | "dark") => ({
   tertiary: getUIColor(shiftLCH(m.primary, { hue: -60 }), md),
   textS: getShades(m.text, [2, 2], { lightness: md === "light" ? -6 : 6 }),
 
-  border: shiftLCH(m.text, {
-    lightness: md === "light" ? 58 : -50,
-    chroma: -0.02,
+  border: shiftLCH(m.primary, {
+    lightness: md === "light" ? 30 : -40,
+    chroma: -0.11,
   }),
   primaryLight: shiftLCH(m.primary, {
     lightness: md === "light" ? 10 : -10,
     chroma: -0.08,
   }),
   // Remove the first element
-  surface: getShades(m.background, [0, 3], {
-    lightness: md === "light" ? 4 : 8,
+  surface: getShades(m.background, [0, 4], {
+    lightness: md === "light" ? 4 : 4,
   }).slice(1),
 });
 
@@ -98,11 +98,5 @@ const palette = { id: "xipProto", name: "xip Proto", base, vars };
 const theme = generateTheme(palette, baseFn, modeFn);
 
 const cssVal = cssConverter(theme);
-
-// console.log(JSON.stringify({
-//   palette,
-//   theme,
-//   cssVal
-// }, null, 2))
 
 export { palette, theme, cssVal };

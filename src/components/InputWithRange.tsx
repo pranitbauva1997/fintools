@@ -1,7 +1,6 @@
 import { Stack, Input, Cluster, RangeInput } from '@xypnox/xip-ui';
 
 import styles from '../style/calc.module.css';
-import { Show } from 'solid-js';
 
 
 export const InputWithRange = (props: {

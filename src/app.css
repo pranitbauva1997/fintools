@@ -16,6 +16,13 @@ body {
   padding: 0;
 }
 
+body.no-transition {
+  transition: none;
+  * {
+    transition: all 0s !important;
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -25,6 +32,23 @@ main {
   color: var(--textS-2);
   width: 100%;
   min-height: calc(100dvh - 5em);
+  max-width: var(--layout-width);
+}
+
+nav {
+  padding: 1em var(--font-size-3);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  max-width: var(--layout-width);
+  margin-inline: auto;
+  button {
+    padding: 0.25em !important;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 
 .body-contents {
@@ -79,4 +103,27 @@ a {
 
 a:hover {
   color: var(--primary-s-4);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th,
+  td {
+    text-align: left;
+    border: 1px solid var(--border);
+    padding: 0.5em 0.75em;
+  }
+  th:not(:first-child),
+  td:not(:first-child) {
+    font-weight: bold;
+    text-align: right;
+  }
+
+  th:first-child,
+  td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--surface-1);
+  }
 }

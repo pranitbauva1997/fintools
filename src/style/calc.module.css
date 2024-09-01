@@ -1,14 +1,46 @@
 .calc {
-  align-items: flex-start;
-  gap: 3em;
-  > div {
-    max-width: 80ch;
+  align-items: stretch;
+  gap: 0em;
+  border: 1px solid var(--border);
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50ch;
+  flex-grow: 1;
+  justify-content: flex-start;
+  gap: 0em;
+  > * {
+    padding: 1em;
+    margin-block-start: 0;
+    height: max-content;
+  }
+  > *:not(:last-child) {
+    border-bottom: 1px solid var(--border);
   }
 }
+
+.output {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+  background-color: var(--surface-0);
+  padding: 1em;
+  overflow: scroll;
+}
+
+.output-stack {
+  background-color: var(--surface-0);
+  padding: 1em;
+  overflow: scroll;
+}
+
 .range-and-input {
   align-items: flex-start;
   gap: 0.5em;
-  max-width: 40ch;
 }
 
 .input-group {
@@ -33,10 +65,12 @@
     padding: 0;
     text-align: right;
     font-weight: bold;
-    width: 6ch;
+    max-width: 10ch;
+    width: min-content;
   }
 
   input[type="number"] {
+    appearance: textfield;
     -moz-appearance: textfield;
   }
   input[type="number"]::-webkit-outer-spin-button,
@@ -55,18 +89,15 @@
 .number-input {
   display: flex;
   gap: 0.5em;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   justify-content: end;
+  label {
+    font-size: 1.2em;
+  }
   :first-child {
     margin-inline-end: auto;
   }
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5em;
 }
 
 .range-input {
@@ -76,25 +107,6 @@
   font-size: var(--font-size--2);
   flex-grow: 1;
   width: 100%;
-}
-
-.output {
-  flex-grow: 1;
-  background-color: var(--color-2);
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    th,
-    td {
-      text-align: left;
-      border: 1px solid var(--border);
-      padding: 0.5em 0.75em;
-    }
-    td:nth-child(2) {
-      font-weight: bold;
-      text-align: right;
-    }
-  }
 }
 
 .explanation {

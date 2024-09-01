@@ -18,5 +18,9 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@iconify-json/ph": "^1.2.0",
+    "unplugin-icons": "^0.19.2"
   }
 }
