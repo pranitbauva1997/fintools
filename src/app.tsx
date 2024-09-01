@@ -70,9 +70,6 @@ export default function App() {
           <Title>SolidStart - Basic</Title>
           <nav>
             <Cluster>
-              <img src="/image.jpg" alt="logo" class="logo" />
-            </Cluster>
-            <Cluster>
               <a href="/lumpsum">Lumpsum</a>
               <a href="/emi/home-loan">EMI</a>
               <a href="/sip/">SIP</a>
